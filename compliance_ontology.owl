@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://example.com/iso27001#"
+     xml:base="http://example.com/iso27001"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+     
+    <owl:Ontology rdf:about="http://example.com/iso27001">
+        <rdfs:comment>Ontology for ISO 27001 Compliance in SMEs</rdfs:comment>
+    </owl:Ontology>
+    
+    <!-- Classes -->
+    <owl:Class rdf:about="#Asset"/>
+    <owl:Class rdf:about="#Risk"/>
+    <owl:Class rdf:about="#Control"/>
+
+    <!-- Properties -->
+    <owl:ObjectProperty rdf:about="#requires">
+        <rdfs:domain rdf:resource="#Asset"/>
+        <rdfs:range rdf:resource="#Control"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="#mitigates">
+        <rdfs:domain rdf:resource="#Control"/>
+        <rdfs:range rdf:resource="#Risk"/>
+    </owl:ObjectProperty>
+
+    <owl:DatatypeProperty rdf:about="#hasRiskLevel">
+        <rdfs:domain rdf:resource="#Risk"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+
+    <!-- Individuals -->
+    <owl:NamedIndividual rdf:about="#Asset123">
+        <rdf:type rdf:resource="#Asset"/>
+        <requires rdf:resource="#Control456"/>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Control456">
+        <rdf:type rdf:resource="#Control"/>
+        <mitigates rdf:resource="#Risk789"/>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Risk789">
+        <rdf:type rdf:resource="#Risk"/>
+        <hasRiskLevel rdf:datatype="&xsd;string">High</hasRiskLevel>
+    </owl:NamedIndividual>
+</rdf:RDF>

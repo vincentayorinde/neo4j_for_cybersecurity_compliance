@@ -1,0 +1,4 @@
+startId,endId,type
+1,1,protectsAgainst
+2,2,protectsAgainst
+2,1,hasComplianceTask
